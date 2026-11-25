@@ -1,0 +1,99 @@
+/* ============================================================
+   base.css - БҮХ хуудсанд нийтлэг загвар
+   (өнгө, фонт, товч, тор, форм, мэдэгдэл, хөл хэсэг)
+   ============================================================ */
+
+/* --- Өнгөнүүд: эндээс сольвол бүх сайтын өнгө солигдоно --- */
+:root {
+    --green: #1f4d3a;
+    --green-2: #2f6b4f;
+    --wheat: #e0a526;
+    --wheat-dark: #b98310;
+    --soil: #3b2b20;
+    --mist: #eef3ec;
+    --paper: #ffffff;
+    --text: #23302a;
+    --muted: #5f6f66;
+    --line: #d7e0d6;
+    --danger: #a3341f;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    color: var(--text);
+    background: var(--paper);
+    line-height: 1.6;
+}
+h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; line-height: 1.25; color: var(--green); }
+a { color: var(--green-2); }
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible {
+    outline: 3px solid var(--wheat);
+    outline-offset: 2px;
+}
+
+/* --- Байршил --- */
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+.narrow { max-width: 720px; }
+.section { padding: 48px 20px; }
+.page-title { margin: 0 0 24px; font-size: 2rem; }
+
+/* --- Товч --- */
+.btn {
+    display: inline-block;
+    background: var(--wheat);
+    color: var(--soil);
+    border: 0;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+}
+.btn:hover { background: #f0b83a; }
+.btn.full { width: 100%; margin-top: 6px; }
+
+/* --- Тор (багана) --- */
+.grid { display: grid; gap: 20px; }
+.grid.four { grid-template-columns: repeat(4, 1fr); }
+.grid.three { grid-template-columns: repeat(3, 1fr); }
+.grid.two { grid-template-columns: repeat(2, 1fr); }
+
+/* --- Форм (нэвтрэх, бүртгүүлэх, холбоо барих) --- */
+.form { display: flex; flex-direction: column; gap: 14px; }
+.form label { display: flex; flex-direction: column; gap: 6px; font-size: .95rem; color: var(--muted); }
+.form input, .form select, .form textarea {
+    padding: 11px 12px;
+    border: 1px solid #c4d0c4;
+    border-radius: 8px;
+    font: inherit;
+    color: var(--text);
+    background: #fff;
+}
+.form input:focus, .form select:focus, .form textarea:focus { border-color: var(--green-2); }
+
+/* --- Мэдэгдэл (амжилттай / алдаа) --- */
+.flashes { padding-top: 16px; }
+.flash { padding: 12px 16px; border-radius: 8px; margin-bottom: 8px; }
+.flash.success { background: #e3f1e6; color: #1d5a2e; border: 1px solid #b9d9c0; }
+.flash.error { background: #fbe7e3; color: var(--danger); border: 1px solid #efc2ba; }
+
+/* --- Хөл хэсэг --- */
+.site-footer { background: var(--soil); color: #e8ddd2; margin-top: 40px; }
+.foot { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; padding-top: 32px; padding-bottom: 20px; }
+.foot p { margin: 6px 0 0; color: #cdbfb0; }
+.copy { text-align: center; padding: 14px; border-top: 1px solid rgba(255,255,255,.12); font-size: .88rem; color: #b9aa9a; }
+
+/* --- Жижиг дэлгэц --- */
+@media (max-width: 860px) {
+    .grid.four { grid-template-columns: repeat(2, 1fr); }
+    .grid.three, .grid.two, .foot { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+    .grid.four { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

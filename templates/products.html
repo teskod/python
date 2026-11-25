@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='content.css') }}">
+{% endblock %}
+{% block title %}Бүтээгдэхүүн{% endblock %}
+{% block content %}
+<section class="wrap section">
+    <h1 class="page-title">Бүтээгдэхүүн</h1>
+    <div class="filters">
+        <a href="{{ url_for('products') }}" class="chip {{ 'on' if not selected }}">Бүгд</a>
+        {% for c in cats %}
+        <a href="{{ url_for('products', cat=c) }}" class="chip {{ 'on' if selected == c }}">{{ c }}</a>
+        {% endfor %}
+    </div>
+    <div class="grid four">
+        {% for p in items %}
+        <article class="product">
+            <div class="p-icon">{{ p.icon }}</div>
+            <h3>{{ p.name }}</h3>
+            <span class="cat">{{ p.cat }}</span>
+            <strong class="price">{{ p.price }}</strong>
+        </article>
+        {% else %}
+        <p>Энэ ангилалд бүтээгдэхүүн алга.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

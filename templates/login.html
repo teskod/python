@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+{% endblock %}
+{% block title %}Нэвтрэх{% endblock %}
+{% block content %}
+<section class="auth">
+    <div class="auth-card">
+        <div class="auth-logo">🌾</div>
+        <h1>Нэвтрэх</h1>
+        <form method="post" class="form">
+            <label>Нэвтрэх нэр <input type="text" name="username" autocomplete="username" required autofocus></label>
+            <label>Нууц үг <input type="password" name="password" autocomplete="current-password" required></label>
+            <button class="btn full" type="submit">Нэвтрэх</button>
+        </form>
+        <p class="auth-alt">Бүртгэлгүй юу? <a href="{{ url_for('register') }}">Бүртгүүлэх</a></p>
+    </div>
+</section>
+{% endblock %}

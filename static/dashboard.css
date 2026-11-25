@@ -1,0 +1,10 @@
+/* ============================================================
+   dashboard.css - МИНИЙ БУЛАН (нэвтэрсний дараах хуудас)
+   ============================================================ */
+.panel { border: 1px solid var(--line); border-radius: 10px; padding: 22px; }
+.panel h3 { margin-top: 0; }
+dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 8px 18px; }
+dt { color: var(--muted); }
+dd { margin: 0; }
+ul.plain { padding-left: 18px; margin: 0; }
+ul.plain li { margin-bottom: 8px; }

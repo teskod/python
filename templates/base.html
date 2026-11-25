@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Хөдөө аж ахуй{% endblock %} | Хөдөө аж ахуйн портал</title>
+    <!-- Бүх хуудсанд нийтлэг загвар -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='menu.css') }}">
+    <!-- Хуудас бүрийн өөрийн загвар (хуудас бүр доор нэмнэ) -->
+    {% block css %}{% endblock %}
+</head>
+<body>
+<header class="site-header">
+    <div class="wrap nav">
+        <a href="{{ url_for('home') }}" class="brand"><span class="brand-mark">🌾</span> Хөдөө аж ахуй</a>
+        <button class="nav-toggle" aria-label="Цэс нээх" aria-expanded="false">☰</button>
+        <nav class="menu" id="menu">
+            <a href="{{ url_for('home') }}" class="{{ 'active' if request.endpoint == 'home' }}">Нүүр</a>
+            <a href="{{ url_for('products') }}" class="{{ 'active' if request.endpoint == 'products' }}">Бүтээгдэхүүн</a>
+            <a href="{{ url_for('news') }}" class="{{ 'active' if request.endpoint == 'news' }}">Мэдээ, зөвлөгөө</a>
+            <a href="{{ url_for('about') }}" class="{{ 'active' if request.endpoint == 'about' }}">Бидний тухай</a>
+            <a href="{{ url_for('contact') }}" class="{{ 'active' if request.endpoint == 'contact' }}">Холбоо барих</a>
+            {% if session.user_id %}
+                <a href="{{ url_for('dashboard') }}" class="btn btn-small">{{ session.fullname }}</a>
+                <a href="{{ url_for('logout') }}">Гарах</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="btn btn-small">Нэвтрэх</a>
+            {% endif %}
+        </nav>
+    </div>
+</header>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="wrap flashes">
+      {% for cat, msg in messages %}
+        <div class="flash {{ cat }}">{{ msg }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+<main>{% block content %}{% endblock %}</main>
+
+<footer class="site-footer">
+    <div class="wrap foot">
+        <div>
+            <strong>Хөдөө аж ахуйн портал</strong>
+            <p>Малчин, тариаланчдад зориулсан мэдээлэл, зах зээлийн холбоос.</p>
+        </div>
+        <div>
+            <strong>Холбоо барих</strong>
+            <p>Улаанбаатар хот<br>info@khuduu.mn<br>+976 9900 0000</p>
+        </div>
+    </div>
+    <div class="copy">© 2026 Хөдөө аж ахуйн портал</div>
+</footer>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

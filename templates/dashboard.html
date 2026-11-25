@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+{% endblock %}
+{% block title %}Миний булан{% endblock %}
+{% block content %}
+<section class="wrap section">
+    <h1 class="page-title">Сайн байна уу, {{ user.fullname }}</h1>
+    <div class="grid two">
+        <article class="panel">
+            <h3>Миний мэдээлэл</h3>
+            <dl>
+                <dt>Нэвтрэх нэр</dt><dd>{{ user.username }}</dd>
+                <dt>Аймаг, хот</dt><dd>{{ user.aimag or '—' }}</dd>
+                <dt>Бүртгүүлсэн</dt><dd>{{ user.created }}</dd>
+            </dl>
+        </article>
+        <article class="panel">
+            <h3>Улирлын ажлын төлөвлөгөө</h3>
+            <ul class="plain">
+                {% for season, work in calendar %}
+                <li><strong>{{ season }}:</strong> {{ work }}</li>
+                {% endfor %}
+            </ul>
+        </article>
+    </div>
+</section>
+{% endblock %}

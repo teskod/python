@@ -1,0 +1,42 @@
+/* ============================================================
+   home.css - НҮҮР ХУУДАС (баннер, чиглэлүүд)
+   ============================================================ */
+
+/* --- Баннер --- */
+.hero {
+    background: linear-gradient(180deg, #7fb5a0 0%, #cfe3d0 62%, #f1e6bd 100%);
+    position: relative;
+    padding: 90px 0 150px;
+    overflow: hidden;
+}
+.hero::before {                       /* нар */
+    content: "";
+    position: absolute; top: 36px; right: 11%;
+    width: 92px; height: 92px;
+    background: #f6c64a; border-radius: 50%;
+    box-shadow: 0 0 0 18px rgba(246,198,74,.25);
+}
+.hero-inner { position: relative; z-index: 2; }
+.hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); color: var(--green); max-width: 14em; margin: 0 0 14px; }
+.hero p { max-width: 34em; font-size: 1.15rem; color: #274236; margin: 0 0 26px; }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.hills { position: absolute; left: 0; bottom: -1px; width: 100%; height: 130px; }
+
+/* Баннер доторх хоёр дахь товч (ногоон хүрээтэй) */
+.btn-ghost { background: transparent; color: var(--green); border: 2px solid var(--green); }
+.btn-ghost:hover { background: rgba(31,77,58,.1); }
+
+/* --- Үндсэн чиглэлүүд --- */
+.tile { padding: 22px 0; border-top: 3px solid var(--wheat); }
+.tile .ico { font-size: 2rem; }
+.tile h3 { margin: 6px 0; }
+.tile p { margin: 0; color: var(--muted); }
+
+/* --- Саарал-ногоон дэвсгэр бүхий хэсэг --- */
+.band { background: var(--mist); }
+.more { margin-top: 22px; }
+
+@media (max-width: 720px) {
+    .hero { padding: 60px 0 120px; }
+    .hero::before { width: 60px; height: 60px; right: 6%; top: 20px; }
+}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+{% endblock %}
+{% block title %}Бүртгүүлэх{% endblock %}
+{% block content %}
+<section class="auth">
+    <div class="auth-card">
+        <div class="auth-logo">🌱</div>
+        <h1>Бүртгүүлэх</h1>
+        <form method="post" class="form">
+            <label>Овог нэр <input type="text" name="fullname" required></label>
+            <label>Нэвтрэх нэр <input type="text" name="username" autocomplete="username" required></label>
+            <label>Аймаг, хот
+                <select name="aimag">
+                    {% for a in aimags %}<option>{{ a }}</option>{% endfor %}
+                </select>
+            </label>
+            <label>Нууц үг (6+ тэмдэгт) <input type="password" name="password" autocomplete="new-password" required></label>
+            <label>Нууц үг давтах <input type="password" name="confirm" autocomplete="new-password" required></label>
+            <button class="btn full" type="submit">Бүртгүүлэх</button>
+        </form>
+        <p class="auth-alt">Бүртгэлтэй юу? <a href="{{ url_for('login') }}">Нэвтрэх</a></p>
+    </div>
+</section>
+{% endblock %}

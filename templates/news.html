@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='content.css') }}">
+{% endblock %}
+{% block title %}Мэдээ, зөвлөгөө{% endblock %}
+{% block content %}
+<section class="wrap section narrow">
+    <h1 class="page-title">Мэдээ, зөвлөгөө</h1>
+    {% for n in news %}
+    <article class="news-row">
+        <time>{{ n.date }}</time>
+        <h3>{{ n.title }}</h3>
+        <p>{{ n.text }}</p>
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}
